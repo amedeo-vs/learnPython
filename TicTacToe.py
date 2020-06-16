@@ -7,7 +7,7 @@ import random
 def display_board(board):  # display the board' game
     # this is really crap, need to do better later
     ncol = '      0    1    2'
-    print(ncol)
+    print(f"\n{ncol}")
     for nrow, row in zip(board_range, board):
         print(nrow, ' ', row)
     print()
@@ -131,12 +131,13 @@ while game_on:
         # check if winner choice
         if win_chek(board, player_mark[the_player]):
             display_board(board)
-            print(f"\nPlayer {the_player} wins this game")
-            quit()
+            print(f"\nPlayer {the_player} wins this game\n")
+            break
 
         # flipflop player ...1>2>1>2...
         the_player = the_player % 2 + 1
-        # decrease empty cells
+        # decrease empty cells. If there is a winner
+        # with last cell choice this will stay 1
         empty_cells -= 1
         game_on = ok_to_cont('Continue')
 
