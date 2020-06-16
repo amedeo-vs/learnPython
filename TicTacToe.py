@@ -13,7 +13,7 @@ def display_board(board):  # display the board' game
     print()
 
 
-def user_cell(player, mark):  # collect user choice
+def player_input(player, mark):  # collect user choice
     x = y = 'WRONG'
     # input_range
     while x.isdigit() == False or y.isdigit() == False:
@@ -93,10 +93,9 @@ def choose_first():
 #
 # # --- main ---
 #
-msg = """\n  TicTacToe
+msg = """\n  Welcome to Tic Tac Toe
 
-Select the mark for player 1 and 2 between
-O and X.
+Select the mark for player 1 and 2 between O and X.
 Each player has to provide the cell coordonate
 providing a pair of number in the range 0-2.\n"""
 
@@ -126,7 +125,7 @@ while game_on:
     while game_on and empty_cells > 0:
         display_board(board)
         # get the cell
-        x, y = user_cell(the_player, player_mark[the_player])
+        x, y = player_input(the_player, player_mark[the_player])
         board[x][y] = player_mark[the_player]
         # check if winner choice
         if win_chek(board, player_mark[the_player]):
